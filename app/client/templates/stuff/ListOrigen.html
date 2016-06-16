@@ -1,0 +1,31 @@
+<template name="ListOrigen">
+  {{#IfLoggedIn}}
+    <div class="well">
+
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Parametro 1</th>
+          <th>Parametro 2</th>
+          <th>Editar</th>
+          <th>Borrar</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {{#each origenList}}
+          <tr>
+            <td>{{name}}</td>
+            <td>{{param1}}</td>
+            <td>{{param2}}</td>
+            <td><a href="{{pathFor 'EditOrigen'}}" class="btn btn-default">Editar</a></td>
+            <td><a class="btn btn-danger remove">Borrar</a></td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+
+    </div>
+  {{/IfLoggedIn}}
+</template>
