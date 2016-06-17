@@ -19,8 +19,22 @@
             {{#if afFieldValueIs name="origenId" value=interna}}
               {{> afQuickField name="location"}}
             {{/if}}
-            <div class="radio-inline">
+            <div style="width:100%;">
             {{> afQuickField name='type' noselect=true type="select-radio"}}
+            {{#if afFieldValueIs name="type" value='PRODUCTO'}}
+              {{> afQuickField name='descripcion'}}
+              {{> afQuickField name='codproducto'}}
+            {{/if}}
+            {{#if afFieldValueIs name="type" value='CATEGORIA'}}
+              {{> afQuickField name='descripcion'}}
+              {{> afQuickField name='codcategoria'}}
+              {{> afQuickField name='url' value='http://www.sodimac.cl/sodimac-cl/category/'}}
+            {{/if}}
+            {{#if afFieldValueIs name="type" value='CONTENIDOS'}}
+              {{> afQuickField name='descripcion'}}
+              {{> afQuickField name='codcontenido'}}
+              {{> afQuickField name='url' value='http://www.sodimac.cl/sodimac-cl/content/'}}
+            {{/if}}
             </div>
           </fieldset>
           <div align="right">

@@ -91,6 +91,36 @@ CreateId.attachSchema(new SimpleSchema({
         },
       }
     },
+    descripcion: {
+    label: "Descripcion",
+    type: String,
+    optional: false,
+    max: 50,
+  },
+   codproducto: {
+    label: "Codigo Producto",
+    type: String,
+    optional: true,
+    max: 50,
+  },
+  codcontenido: {
+    label: "Codigo Contenido",
+    type: String,
+    optional: true,
+    max: 50,
+  },
+  codcategoria: {
+    label: "Codigo Categoria",
+    type: String,
+    optional: true,
+    max: 50,
+  },
+  url: {
+    label: "URL",
+    type: String,
+    optional: true,
+    max: 200,
+  },
 
 
 }));
