@@ -2,7 +2,16 @@
  * Configure Iron Router.
  * See: http://iron-meteor.github.io/iron-router/
  */
-
+Router.onBeforeAction(function () {
+    if (!Meteor.user() && !Meteor.loggingIn()) {
+        Router.go('login');
+    } else {
+        // required by Iron to process the route handler
+        this.next();
+    }
+}, {
+    except: ['login']
+}); 
 
 Router.configure({
   layoutTemplate: 'Layout',
@@ -14,6 +23,10 @@ Router.route('/', {
   name: 'Home'
 });
 
+Router.route('/login', {
+  name: 'login'
+});
+
 Router.route('/list', {
   name: 'ListStuff'
 });
@@ -22,18 +35,21 @@ Router.route('/listOrigen', {
   name: 'listOrigen',
   waitOn: function() { return Meteor.subscribe("Origen"); },
 });
+Router.route('/listIds', {
+  name: 'listIds',
+  waitOn: function() { return [Meteor.subscribe("Origen"), Meteor.subscribe("CreateId")]; },
+});
 
 Router.route('/add', {
   name: 'AddStuff'
 });
-
 Router.route('/addOrigen', {
   name: 'AddOrigen'
 });
 
 Router.route('/CreateId', {
   name: 'CreateId',
-  waitOn: function() { return Meteor.subscribe("Origen"); },
+  waitOn: function() { return [Meteor.subscribe("Origen"), Meteor.subscribe("CreateId")]; },
 });
 
 Router.route('/origen/:_id', {

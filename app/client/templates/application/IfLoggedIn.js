@@ -12,3 +12,44 @@ Template.IfLoggedIn.helpers({
     return !!Meteor.user();
   }
 });
+
+Template.Header.helpers({
+
+  AdminUser: function() {
+   var user = Meteor.user() || null;
+   if(user == null ){
+    return false;
+   }
+   if(user.username == 'admin') {
+    return true;
+   } 
+   else{
+    return false;
+   }  
+  }
+});
+Template.Header.events({
+    'click .logout': function(event){
+        event.preventDefault();
+        Meteor.logout();
+        Router.go('login');
+    },
+
+});
+Template.login.events({
+    'submit form': function(event){
+        event.preventDefault();
+        var emailVar = event.target.loginEmail.value;
+        var passwordVar = event.target.loginPassword.value;
+        Meteor.loginWithPassword(emailVar, passwordVar);
+        if (! Meteor.user()) {
+          if (Meteor.loggingIn()) {
+             Router.go('CreateId');
+          }
+          else{
+            Router.go('login');
+          }
+        }
+       
+    }
+});

@@ -1,5 +1,7 @@
 <template name="Layout">
+{{#if currentUser}}
   {{> Header}}
+{{/if}}
   <div class="container">
     {{> yield}}
   </div>

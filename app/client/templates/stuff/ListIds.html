@@ -1,0 +1,35 @@
+<template name="ListIds">
+  {{#IfLoggedIn}}
+    <div class="well">
+       {{#autoForm collection="CreateId" id="SearchForm" type="method" meteormethod="addSearchId" resetOnSuccess=true}}
+          <fieldset>
+            <legend>URLs Creadas</legend>
+            {{> afQuickField name='origenId' noselect=true type="select"}}
+          </fieldset>
+          <table class="table">
+        <thead>
+        <tr>
+          <th>Origen</th>
+          <th>Descripcion</th>
+          <th>Url</th>
+          <th>Borrar</th>
+        </tr>
+        </thead>
+
+        <tbody>
+    
+        {{#each CreatedIdList}}
+          <tr>
+            <td>{{NameOrigen origenId}}</td>
+            <td>{{descripcion}}</td>
+            <td>{{url}}</td>
+            <td><a class="btn btn-danger remove">Borrar</a></td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>   
+        {{/autoForm}}            
+
+    </div>
+  {{/IfLoggedIn}}
+</template>

@@ -15,32 +15,36 @@
       {{#autoForm collection="CreateId" id="AddCreateIdForm" type="method" meteormethod="addCreateId" resetOnSuccess=true}}
           <fieldset>
             <legend>Creación de Campaña</legend>
-            {{> afQuickField name='origenId'}}
+            {{> afQuickField name='origenId' noselect=true type="select"}}
             {{#if afFieldValueIs name="origenId" value=interna}}
               {{> afQuickField name="location"}}
+            {{/if}}
+            {{#if afFieldValueIs name="origenId" value=emkt}}
+              {{> afQuickField name="ecn" label="ECN"}}
             {{/if}}
             <div style="width:100%;">
             {{> afQuickField name='type' noselect=true type="select-radio"}}
             {{#if afFieldValueIs name="type" value='PRODUCTO'}}
               {{> afQuickField name='descripcion'}}
-              {{> afQuickField name='codproducto'}}
+              {{> afQuickField name='codigo' label="Codigo Producto (SKU)"}}
             {{/if}}
             {{#if afFieldValueIs name="type" value='CATEGORIA'}}
               {{> afQuickField name='descripcion'}}
-              {{> afQuickField name='codcategoria'}}
-              {{> afQuickField name='url' value='http://www.sodimac.cl/sodimac-cl/category/'}}
+               {{> afQuickField name='codigo' label="Codigo Categoria"}}
             {{/if}}
             {{#if afFieldValueIs name="type" value='CONTENIDOS'}}
               {{> afQuickField name='descripcion'}}
-              {{> afQuickField name='codcontenido'}}
-              {{> afQuickField name='url' value='http://www.sodimac.cl/sodimac-cl/content/'}}
+               {{> afQuickField name='codigo' label="Codigo Contenido"}}   
             {{/if}}
+            {{> afQuickField name='param1' value=currentFieldParam1 }}
+            {{> afQuickField name='url' value=currentUrl}}
             </div>
           </fieldset>
           <div align="right">
 <!--           <button type="button" class="btn btn-danger remove">Borrar</button>
           <button type="button" class="btn btn-default cancel">Cancelar</button> -->
-          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="reset" class="btn btn-default">LIMPIAR</button>
+          <button type="submit" class="btn btn-primary">CREAR URL</button>
           </div>
         {{/autoForm}}       
     </div>

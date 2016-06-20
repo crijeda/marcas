@@ -1,58 +1,49 @@
-createid = "CreateId";  // avoid typos, this string occurs many times.
+searchid = "SearchId";  // avoid typos, this string occurs many times.
 
-CreateId = new Mongo.Collection(createid);
+SearchId = new Mongo.Collection(searchid);
 
 Meteor.methods({
   /**
-   * Invoked by AutoForm to add a new CreateId record.
-   * @param doc The CreateId document.
+   * Invoked by AutoForm to add a new SearchId record.
+   * @param doc The SearchId document.
    */
-  addCreateId: function(doc) {
-    check(doc, CreateId.simpleSchema());
+  addSearchId: function(doc) {
+    check(doc, SearchId.simpleSchema());
     doc.createdAt = moment().format("YYYY-MM-DDThh:mm:ss");
-    CreateId.insert(doc);
+    SearchId.insert(doc);
     Router.go('listIds');
   },
   /**
    *
-   * Invoked by AutoForm to update a CreateId record.
-   * @param doc The CreateId document.
+   * Invoked by AutoForm to update a SearchId record.
+   * @param doc The SearchId document.
    * @param docID It's ID.
    */
-  editCreateId: function(doc, docID) {
-    check(doc, CreateId.simpleSchema());
-    CreateId.update({_id: docID}, doc);
+  editSearchId: function(doc, docID) {
+    check(doc, SearchId.simpleSchema());
+    SearchId.update({_id: docID}, doc);
   },
-   deleteCreateId: function(docID) {
-    CreateId.remove({_id: docID});
+   deleteSearchId: function(docID) {
+    SearchId.remove({_id: docID});
   }
 
 });
 
 // Publish the entire Collection.  Subscription performed in the router.
 if (Meteor.isServer) {
-  Meteor.publish(createid, function () {
-    return CreateId.find();
+  Meteor.publish(searchid, function () {
+    return SearchId.find();
   });
 }
 
 
 /**
- * Create the schema for CreateId
+ * Create the schema for SearchId
  * See: https://github.com/aldeed/meteor-autoform#common-questions
  * See: https://github.com/aldeed/meteor-autoform#affieldinput
  */
-CreateId.attachSchema(new SimpleSchema({
+SearchId.attachSchema(new SimpleSchema({
 
- createdAt: {
-    type: String,
-    optional: true,
-    autoform: {
-      afFieldInput: {
-        type: "datetime"
-      }
-    }
-  },
   origenId: {
       type: String,
       optional:false,

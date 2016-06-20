@@ -15,14 +15,18 @@
       <ul class="collapse navbar-collapse" id="main-nav">
 
         <ul class="nav navbar-nav navbar-right">
-          {{#if currentUser}}
-            <li><a href="{{ pathFor 'CreateId' }}">Crear ID</a></li>
+
+          {{#if AdminUser}}
             <li><a href="{{ pathFor 'AddOrigen' }}">Origenes</a></li>
             <li><a href="{{ pathFor 'listOrigen' }}">List Origenes</a></li>
-     <!--        <li><a href="{{ pathFor 'AddStuff' }}">Add Stuff</a></li>
-            <li><a href="{{ pathFor 'ListStuff' }}">List Stuff</a></li> -->
+            
           {{/if}}
-          <li><a href="#" class="navbar-link">{{> loginButtons }}</a></li>
+
+          {{#if currentUser}}
+            <li><a href="{{ pathFor 'CreateId' }}">Crear ID</a></li>
+            <li><a href="{{ pathFor 'listIds' }}">ID Creados</a></li>
+            <li><a href="#" class="navbar-link">{{> loginButtons }}</a></li>
+          {{/if}}
 
         </ul>
 
