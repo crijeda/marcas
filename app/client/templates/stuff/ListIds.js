@@ -22,8 +22,15 @@ Template.ListIds.helpers({
   CreatedIdList: function () {
     var search ={}; 
     var id = AutoForm.getFieldValue("origenId");
-    if(typeof id !== "undefined"){
+    var descripcion = AutoForm.getFieldValue("descripcion");
+    if(typeof id !== "undefined" && typeof descripcion == "undefined"){
     var search={origenId:id};
+    }
+    if(typeof id !== "undefined" && typeof descripcion !== "undefined"){
+    var search={origenId:id,descripcion:{'$regex' : '.*' + descripcion + '.*'}};
+    }
+    if(typeof id == "undefined" && typeof descripcion !== "undefined"){
+    var search={descripcion:{'$regex' : '.*' + descripcion + '.*'}};
     }
     return CreateId.find(search,{sort: {createdAt: -1}});
   },
@@ -36,9 +43,13 @@ Template.ListIds.events({
 
     'click .remove': function () {
    	Meteor.call('deleteCreateId',this._id);
-    // Origen.remove(this._id);
-     // alert(this._id);
-    // Router.go('listOrigen');
-    
-  },
+    },
+    'click .download': function(event) {
+  var nameFile = 'Marcas.csv';
+  Meteor.call('download', function(err, fileContent) {
+    if(fileContent){
+      var blob = new Blob([fileContent], {type: "text/plain;charset=utf-8"});
+      saveAs(blob, nameFile);
+    }
+  })},
 });

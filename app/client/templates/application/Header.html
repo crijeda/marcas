@@ -23,6 +23,7 @@
           {{/if}}
 
           {{#if currentUser}}
+            <li><a href="{{ pathFor 'CreateIdMasivo' }}">Crear ID Masivo</a></li>
             <li><a href="{{ pathFor 'CreateId' }}">Crear ID</a></li>
             <li><a href="{{ pathFor 'listIds' }}">ID Creados</a></li>
             <li><a href="#" class="navbar-link">{{> loginButtons }}</a></li>

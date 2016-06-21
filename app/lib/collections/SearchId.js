@@ -13,12 +13,6 @@ Meteor.methods({
     SearchId.insert(doc);
     Router.go('listIds');
   },
-  /**
-   *
-   * Invoked by AutoForm to update a SearchId record.
-   * @param doc The SearchId document.
-   * @param docID It's ID.
-   */
   editSearchId: function(doc, docID) {
     check(doc, SearchId.simpleSchema());
     SearchId.update({_id: docID}, doc);

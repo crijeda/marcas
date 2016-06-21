@@ -36,15 +36,16 @@
               {{> afQuickField name='descripcion'}}
                {{> afQuickField name='codigo' label="Codigo Contenido"}}   
             {{/if}}
+            <div style="display:none;">
             {{> afQuickField name='param1' value=currentFieldParam1 }}
             {{> afQuickField name='url' value=currentUrl}}
             </div>
+            </div>
           </fieldset>
           <div align="right">
-<!--           <button type="button" class="btn btn-danger remove">Borrar</button>
-          <button type="button" class="btn btn-default cancel">Cancelar</button> -->
+          <button type="button" class="btn btn-success test">VER ULTIMA MARCA</button>
           <button type="reset" class="btn btn-default">LIMPIAR</button>
-          <button type="submit" class="btn btn-primary">CREAR URL</button>
+          <button type="submit" class="btn btn-primary test">CREAR URL</button>
           </div>
         {{/autoForm}}       
     </div>

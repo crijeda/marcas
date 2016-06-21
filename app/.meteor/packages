@@ -27,3 +27,6 @@ underscore
 ejson
 check
 momentjs:moment
+peppelg:bootstrap-3-modal
+lfergon:exportcsv
+stef:import-export-excel

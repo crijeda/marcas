@@ -15,6 +15,16 @@ AutoForm.hooks({
   }
 });
 
+Template.CreateId.events({
+
+    'click .test': function (event) {
+         setTimeout(function(){
+            Modal.show('exampleModal')
+        })
+    },
+
+});
+
 Template.CreateId.helpers({
 
     interna: function() {

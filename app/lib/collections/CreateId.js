@@ -11,7 +11,7 @@ Meteor.methods({
     check(doc, CreateId.simpleSchema());
     doc.createdAt = moment().format("YYYY-MM-DDThh:mm:ss");
     CreateId.insert(doc);
-    Router.go('listIds');
+    AutoForm.resetForm("AddCreateIdForm");
   },
   /**
    *

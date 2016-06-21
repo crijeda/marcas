@@ -51,6 +51,10 @@ Router.route('/CreateId', {
   name: 'CreateId',
   waitOn: function() { return [Meteor.subscribe("Origen"), Meteor.subscribe("CreateId")]; },
 });
+Router.route('/CreateIdMasivo', {
+  name: 'CreateIdMasivo',
+  waitOn: function() { return [Meteor.subscribe("Origen"), Meteor.subscribe("CreateId")]; },
+});
 
 Router.route('/origen/:_id', {
   name: 'EditOrigen',
