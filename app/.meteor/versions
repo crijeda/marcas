@@ -60,6 +60,7 @@ mobile-status-bar@1.0.6
 momentjs:moment@2.10.6
 mongo@1.1.2
 mongo-id@1.0.1
+netanelgilad:excel@0.2.6
 npm-bcrypt@0.7.8_2
 npm-mongo@1.4.39_1
 observe-sequence@1.0.7
@@ -81,7 +82,6 @@ spacebars@1.0.7
 spacebars-compiler@1.0.7
 srp@1.0.4
 standard-minifiers@1.0.1
-stef:import-export-excel@0.0.3
 stylus@2.511.0_2
 templating@1.1.4
 templating-tools@1.0.0

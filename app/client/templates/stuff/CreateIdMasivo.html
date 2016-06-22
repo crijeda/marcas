@@ -1,25 +1,23 @@
 <template name="CreateIdMasivo">
     <body>
-        <label>Load CSV file: </label> <input type="file" id="fileInput" /><br/><br/>
+       
+        <label>Load XLSX file: </label><input type="file" id="fileInputXLSX" /><br/>
         <table id="result"></table>
-        <input type="button" id="fileExport" hidden="true" />
-        <script type="text/javascript">
-        
-            // check browser support
-            // console.log(SimpleExcel.isSupportedBrowser);
-            
-            // read a CSV file
-            var csvParser = new SimpleExcel.Parser.CSV();
-            var fileInput = document.getElementById('fileInput');
-            // parse when file loaded, then print the result to console
-            fileInput.addEventListener('change', function (e) {            
-                var file = e.target.files[0];
-                csvParser.loadFile(file, function () {
-                    console.log(csvParser.getSheet()); // print!
-                });
-            });
+        <script lang="javascript">            
+            var fileInputXLSX = document.getElementById('fileInputXLSX');
 
+            fileInputXLSX.addEventListener('change', function (e) {
+
+                var files = e.target.files[0];
+                Meteor.call('ReadXLSX');
+            });
+            
+           
             
         </script>
+        <div align="center">
+        <button type="button" class="btn btn-default readxlsx">XLSX</button>
+        <button type="button" class="btn btn-default readxls">XLS</button>
+        </div>
     </body>
 </template>

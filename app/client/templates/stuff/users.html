@@ -1,0 +1,38 @@
+<template name="users">
+  {{#IfLoggedIn}}
+    <div class="well">
+        <div align="right">
+        <form class="form-inline">
+        <div class="form-group">
+          <label class="sr-only" for="exampleInputEmail3">Email address</label>
+          <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Email">
+        </div>
+        <div class="form-group">
+          <label class="sr-only" for="exampleInputPassword3">Password</label>
+          <input type="password" class="form-control" id="InputPassword" name="InputPassword" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary">CREAR USUARIO</button>
+      </form>
+      </div>
+        <table class="table">
+        <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Borrar</th>
+        </tr>
+        </thead>
+
+        <tbody>
+    
+        {{#each users}}
+          <tr>
+            <td>{{username}}</td>
+            <td><a class="btn btn-danger remove">Borrar</a></td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>              
+
+    </div>
+  {{/IfLoggedIn}}
+</template>

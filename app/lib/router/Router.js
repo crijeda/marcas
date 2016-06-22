@@ -31,6 +31,10 @@ Router.route('/list', {
   name: 'ListStuff'
 });
 
+Router.route('/users', {
+  name: 'users'
+});
+
 Router.route('/listOrigen', {
   name: 'listOrigen',
   waitOn: function() { return Meteor.subscribe("Origen"); },
