@@ -31,3 +31,6 @@ peppelg:bootstrap-3-modal
 lfergon:exportcsv
 netanelgilad:excel
 http
+cfs:filesystem
+cfs:standard-packages
+cfs:autoform

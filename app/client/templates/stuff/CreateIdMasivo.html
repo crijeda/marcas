@@ -1,23 +1,24 @@
 <template name="CreateIdMasivo">
     <body>
        
-        <label>Load XLSX file: </label><input type="file" id="fileInputXLSX" /><br/>
-        <table id="result"></table>
-        <script lang="javascript">            
-            var fileInputXLSX = document.getElementById('fileInputXLSX');
-
-            fileInputXLSX.addEventListener('change', function (e) {
-
-                var files = e.target.files[0];
-                Meteor.call('ReadXLSX');
-            });
-            
-           
-            
-        </script>
+        <!-- <label>Load XLSX file: </label><input type="file" id="fileInputXLSX" /><br/> -->
+        <!-- {{> quickForm id="demo" collection=Collections.People}} -->
+        {{> fileUpload}}
+     
         <div align="center">
-        <button type="button" class="btn btn-default readxlsx">XLSX</button>
-        <button type="button" class="btn btn-default readxls">XLS</button>
+        <button type="button" class="btn btn-default readxlsx">READ XLSX</button>
         </div>
     </body>
+</template>
+
+<template name="fileUpload">
+<!-- {{> quickForm collection="Images" id="testingfiles" type="insert"}} -->
+   {{#autoForm collection="Stuff" id="testfiles" type="insert"}}
+    <fieldset>
+      <legend>Sube el Archivo Excel</legend>
+      {{> afQuickField name="fileId" type="cfs-file" collection="uploads"}}
+
+    </fieldset>
+    <div align="right"><button type="submit" class="btn btn-primary">Crear</button></div>
+  {{/autoForm}}
 </template>
