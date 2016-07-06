@@ -1,16 +1,6 @@
 <template name="CreateId">
   {{#IfLoggedIn}}
     <div class="well">
- <!--    {{> quickForm
-      collection="CreateId"
-      template="bootstrap3-horizontal"
-      label-class="col-sm-2"
-      input-col-class="col-sm-10"
-
-      id="AddCreateIdForm"
-      type="method"
-      meteormethod="addCreateId"
-      resetOnSuccess=true}} -->
 
       {{#autoForm collection="CreateId" id="AddCreateIdForm" type="method" meteormethod="addCreateId" resetOnSuccess=true}}
           <fieldset>
@@ -18,15 +8,28 @@
             {{> afQuickField name='origenId' noselect=true type="select"}}
             {{#if afFieldValueIs name="origenId" value=interna}}
               {{> afQuickField name="location"}}
+              {{#if afFieldValueIs name="location" value='ESPECIALES'}}
+              {{> afQuickField name="segment" type="select" options=options1}}
+              {{/if}}
+              {{#if afFieldValueIs name="location" value='HOME'}}
+              {{> afQuickField name="segment" type="select" options=options1}}
+              {{/if}}
+              {{#if afFieldValueIs name="location" value='LANDING PAGE'}}
+              {{> afQuickField name="segment" type="select" options=options2}}
+              {{/if}}
             {{/if}}
             {{#if afFieldValueIs name="origenId" value=emkt}}
               {{> afQuickField name="ecn" label="ECN"}}
             {{/if}}
             <div style="width:100%;">
             {{> afQuickField name='type' noselect=true type="select-radio"}}
-            {{#if afFieldValueIs name="type" value='PRODUCTO'}}
-              {{> afQuickField name='descripcion'}}
+            {{#if afFieldValueIs name="type" value='PRODUCTO'}}    
               {{> afQuickField name='codigo' label="Codigo Producto (SKU)"}}
+
+              {{> afQuickField name='descripcion'}}
+              <span class="input-group-btn">
+                  <button class="btn btn-secondary producto" type="button">Generar a partir del SKU</button>
+                </span>
             {{/if}}
             {{#if afFieldValueIs name="type" value='CATEGORIA'}}
               {{> afQuickField name='descripcion'}}
@@ -45,7 +48,7 @@
           <div align="right">
           <button type="button" class="btn btn-success test">VER ULTIMA MARCA</button>
           <button type="reset" class="btn btn-default">LIMPIAR</button>
-          <button type="submit" class="btn btn-primary test">CREAR URL</button>
+          <button type="submit" class="btn btn-primary">CREAR URL</button>
           </div>
         {{/autoForm}}       
     </div>

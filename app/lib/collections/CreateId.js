@@ -11,7 +11,6 @@ Meteor.methods({
     check(doc, CreateId.simpleSchema());
     doc.createdAt = moment().format("YYYY-MM-DDThh:mm:ss");
     CreateId.insert(doc);
-    AutoForm.resetForm("AddCreateIdForm");
   },
   /**
    *
@@ -82,6 +81,11 @@ CreateId.attachSchema(new SimpleSchema({
         },
       }
     },
+    segment: {
+      type: String,
+      optional:true,
+      label: "Segmento",
+    },
      type: {
       type: String,
       optional:false,
@@ -113,7 +117,7 @@ CreateId.attachSchema(new SimpleSchema({
   },
    codigo: {
     type: String,
-    optional: true,
+    optional: false,
     max: 50,
   },
   url: {

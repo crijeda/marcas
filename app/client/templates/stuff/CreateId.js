@@ -22,6 +22,21 @@ Template.CreateId.events({
             Modal.show('exampleModal')
         })
     },
+    'submit': function (event) {
+         setTimeout(function(){
+            Modal.show('exampleModal')
+        })
+    },
+     'click .producto': function (event) {
+      var codigo = $('[name=codigo]').val() || "empty"; 
+      Meteor.call('json',codigo, function(error, result){
+      if(error){
+      alert('Error');
+      }else{
+       $('[name=descripcion]').val(result[0].name);
+      }
+    });
+    },
 
 });
 
@@ -31,6 +46,30 @@ Template.CreateId.helpers({
     // Meteor.subscribe("Origen");
     var interna = Origen.findOne({name:"INTERNA"});
     return interna._id
+  },
+       options1: function() {
+    // Meteor.subscribe("Origen");
+    return[
+          {label: "BANNER", value: "BANNER"},
+          {label: "BANNER HEADER", value: "BANNER HEADER"},
+          {label: "BANNERS INST", value: "BANNERS INST"},
+          {label: "BANNERS Z2", value: "BANNERS Z2"},
+          {label: "CATEGORIA", value: "CATEGORIA"},
+          {label: "DESTACADOS", value: "DESTACADOS"},
+          {label: "LO NUEVO", value: "LO NUEVO"},
+          {label: "MKT PRIORITY", value: "MKT PRIORITY"},
+          {label: "OPU STOCK LIM", value: "OPU STOCK LIM"},
+          {label: "VITRINA", value: "VITRINA"},
+          {label: "VITRINA HOME", value: "VITRINA HOME"},
+
+          ];
+  },
+     options2: function() {
+    // Meteor.subscribe("Origen");
+    return[
+          {label: "BANNER", value: "BANNER"},
+          {label: "CATEGORIA", value: "CATEGORIA"},
+          ];
   },
     emkt: function() {
     // Meteor.subscribe("Origen");

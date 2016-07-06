@@ -14,5 +14,24 @@ Meteor.methods({
   return exportcsv.exportToCSV(collection, heading, delimiter);
   // return false
   },
+  json: function(sku) {
+      var url = "http://www.sodimac.cl/sodimac-cl/browse/productJson.jsp?productId=" + sku;
+      //synchronous GET
+      var result = Meteor.http.get(url);
+      // instance.counter = new ReactiveVar("");
+      // instance.counter.set(result);
+      // console.log(result.content);
+
+      if(result.statusCode==200) {
+        var respJson = JSON.parse(result.content);
+        console.log("response received.");
+        // console.log(respJson);
+        return respJson;
+      } else {
+        console.log("Response issue: ", result.statusCode);
+        var errorJson = JSON.parse(result.content);
+        throw new Meteor.Error(result.statusCode, errorJson.error);
+      }
+    }
 
 });
